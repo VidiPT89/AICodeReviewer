@@ -1,7 +1,12 @@
+import { countHunk } from './diff-stats'
 import type { PullCard } from './types'
 
+function card(input: Omit<PullCard, 'added' | 'deleted'>): PullCard {
+  return { ...input, ...countHunk(input.diff) }
+}
+
 export const DEMO_PULLS: PullCard[] = [
-  {
+  card({
     id: 'demo-12',
     number: 12,
     title: 'Accept login tokens from the query string',
@@ -20,8 +25,8 @@ export const DEMO_PULLS: PullCard[] = [
    return token
  }
 `,
-  },
-  {
+  }),
+  card({
     id: 'demo-18',
     number: 18,
     title: 'Load every user profile in a nested loop',
@@ -39,8 +44,25 @@ export const DEMO_PULLS: PullCard[] = [
 +  })
  }
 `,
-  },
-  {
+  }),
+  card({
+    id: 'demo-24',
+    number: 24,
+    title: 'Look up orders with a concatenated SQL string',
+    repo: 'ividi/ledger',
+    author: 'guest',
+    opened: '2026-08-25T16:20:00.000Z',
+    diff: `--- a/src/orders.ts
++++ b/src/orders.ts
+@@ -1,4 +1,6 @@
+ export function findOrder(id: string) {
+-  return db.query('select * from orders where id = $1', [id])
++  const sql = 'SELECT * FROM orders WHERE id = ' + id
++  return db.query(sql)
+ }
+`,
+  }),
+  card({
     id: 'demo-21',
     number: 21,
     title: 'Parse the webhook payload with a named type',
@@ -58,5 +80,5 @@ export const DEMO_PULLS: PullCard[] = [
 +  return payload
  }
 `,
-  },
+  }),
 ]

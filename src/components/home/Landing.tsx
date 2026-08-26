@@ -6,7 +6,7 @@ import Link from 'next/link'
 
 export function Landing() {
   const { t } = useLocale()
-  const feats = [t.featApp, t.featHook, t.featDiff, t.featInline, t.featScore, t.featTheme]
+  const feats = [t.featApp, t.featHook, t.featDiff, t.featInline, t.featScore, t.featPaste, t.featTheme]
 
   return (
     <div className="grid gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:items-center">

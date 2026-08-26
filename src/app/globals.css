@@ -341,6 +341,41 @@ select {
   padding: 0.85rem;
 }
 
+.meter {
+  height: 4px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: var(--line);
+}
+
+.meter span {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, var(--ember), var(--amber));
+}
+
+.diff-line.hit {
+  background: rgba(255, 122, 0, 0.16);
+}
+
+.stamp.block,
+.stamp.blocker {
+  border-color: #ff4d00;
+  color: #ff4d00;
+}
+
+.stamp.caution,
+.stamp.warn {
+  border-color: var(--amber);
+  color: var(--amber);
+}
+
+.stamp.ship,
+.stamp.note {
+  border-color: var(--ember);
+  color: var(--ember);
+}
+
 .scan {
   pointer-events: none;
   position: absolute;

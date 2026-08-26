@@ -1,5 +1,6 @@
 import { App } from '@octokit/app'
 import { Webhooks } from '@octokit/webhooks'
+import { countHunk } from './diff-stats'
 import { hasGitHubApp, hasWebhookSecret } from './keys'
 import { reviewDiff } from './review'
 import { rememberPull, saveReview } from './store'
@@ -48,6 +49,7 @@ export async function reviewOpenedPull(input: {
       author: input.author,
       opened: new Date().toISOString(),
       diff,
+      ...countHunk(diff),
     })
 
     if (review.notes.length) {
@@ -56,7 +58,7 @@ export async function reviewOpenedPull(input: {
         repo: input.repo,
         pull_number: input.number,
         event: 'COMMENT',
-        body: `${review.summary}\n\nScore ${review.score.overall}/100 (readability ${review.score.readability}, performance ${review.score.performance}, security ${review.score.security}).`,
+        body: `${review.summary}\n\nVerdict: ${review.verdict}. Score ${review.score.overall}/100 (readability ${review.score.readability}, performance ${review.score.performance}, security ${review.score.security}).`,
         comments: review.notes.slice(0, 12).map((note) => ({
           path: note.path,
           line: note.line,

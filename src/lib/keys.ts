@@ -11,5 +11,10 @@ export function hasWebhookSecret(): boolean {
 }
 
 export function hasHostedModel(): boolean {
-  return filledKey(process.env.ANTHROPIC_API_KEY)
+  return (
+    filledKey(process.env.GROQ_API_KEY) ||
+    filledKey(process.env.GOOGLE_GENERATIVE_AI_API_KEY) ||
+    filledKey(process.env.OPENAI_API_KEY) ||
+    filledKey(process.env.ANTHROPIC_API_KEY)
+  )
 }
