@@ -9,6 +9,11 @@ import { useCallback, useEffect, useMemo, useState } from 'react'
 
 type AxisFilter = 'all' | Axis
 
+async function fetchDesk(): Promise<DeskPayload> {
+  const res = await fetch('/api/reviews')
+  return (await res.json()) as DeskPayload
+}
+
 export function ReviewDesk() {
   const { t, locale } = useLocale()
   const [desk, setDesk] = useState<DeskPayload | null>(null)
@@ -22,16 +27,28 @@ export function ReviewDesk() {
   const [pasteTitle, setPasteTitle] = useState('')
   const [hit, setHit] = useState<number | null>(null)
 
-  const load = useCallback(async () => {
-    const res = await fetch('/api/reviews')
-    const data = (await res.json()) as DeskPayload
+  const apply = useCallback((data: DeskPayload) => {
     setDesk(data)
     setActiveId((current) => current ?? data.pulls[0]?.id ?? null)
   }, [])
 
+  const load = useCallback(async () => {
+    apply(await fetchDesk())
+  }, [apply])
+
   useEffect(() => {
-    void load()
-  }, [load])
+    let ignore = false
+    fetchDesk()
+      .then((data) => {
+        if (!ignore) apply(data)
+      })
+      .catch(() => {
+        /* offline: the desk stays empty */
+      })
+    return () => {
+      ignore = true
+    }
+  }, [apply])
 
   const pulls = useMemo(() => {
     const list = desk?.pulls ?? []
