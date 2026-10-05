@@ -4,6 +4,8 @@
 
 [![CI](https://github.com/VidiPT89/AICodeReviewer/actions/workflows/ci.yml/badge.svg)](https://github.com/VidiPT89/AICodeReviewer/actions/workflows/ci.yml)
 
+**🌐 Live demo:** [ai-code-reviewer-navy-sigma.vercel.app](https://ai-code-reviewer-navy-sigma.vercel.app) · Runs in demo mode: sample pull requests reviewed with the local rules, no GitHub App or model key needed.
+
 [🐞 Report Bug](https://github.com/VidiPT89/AICodeReviewer/issues) · [✨ Request Feature](https://github.com/VidiPT89/AICodeReviewer/issues)
 
 LUPA is a Next.js desk for pull request review. Install it as a GitHub App, or work on the sample PRs. When a pull request opens, the webhook reads the diff, scores the change and leaves inline notes with suggestions. The UI is European Portuguese / English, with language and dark / light theme toggles remembered in `localStorage`. Light mode keeps the same ividi.dev palette on cream paper.
