@@ -26,6 +26,3 @@ export function listReviews(): Record<string, ReviewRecord> {
   return Object.fromEntries(reviews.entries())
 }
 
-export function getReview(prId: string): ReviewRecord | undefined {
-  return reviews.get(prId)
-}

@@ -11,16 +11,12 @@
     "test": "tsx --test tests/*.test.ts"
   },
   "dependencies": {
-    "@ai-sdk/anthropic": "^2.0.0",
     "@octokit/app": "^16.0.1",
     "@octokit/webhooks": "^14.1.2",
-    "ai": "^5.0.0",
     "framer-motion": "^12.23.12",
     "next": "16.3.2",
-    "octokit": "^5.0.3",
     "react": "19.2.8",
-    "react-dom": "19.2.8",
-    "zod": "^4.0.17"
+    "react-dom": "19.2.8"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
