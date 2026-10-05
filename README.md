@@ -4,7 +4,7 @@
 
 [![CI](https://github.com/VidiPT89/AICodeReviewer/actions/workflows/ci.yml/badge.svg)](https://github.com/VidiPT89/AICodeReviewer/actions/workflows/ci.yml)
 
-**🌐 Live demo:** [ai-code-reviewer-navy-sigma.vercel.app](https://ai-code-reviewer-navy-sigma.vercel.app) · Runs in demo mode: sample pull requests reviewed with the local rules, no GitHub App or model key needed.
+**🌐 Live demo:** [lupa.ividi.dev](https://lupa.ividi.dev) · Runs in demo mode: sample pull requests reviewed with the local rules, no GitHub App or model key needed.
 
 [🐞 Report Bug](https://github.com/VidiPT89/AICodeReviewer/issues) · [✨ Request Feature](https://github.com/VidiPT89/AICodeReviewer/issues)
 
